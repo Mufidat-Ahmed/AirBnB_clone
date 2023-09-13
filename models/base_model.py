@@ -25,7 +25,6 @@ class BaseModel:
                 if key != '__class__':
                     setattr(self, key, value)
 
-
     def save(self):
         """updated_at with the current datetime"""
         self.updated_at = datetime.now()

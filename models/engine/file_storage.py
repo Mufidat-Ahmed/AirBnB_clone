@@ -2,6 +2,12 @@
 """Filestorage class defination"""
 import json
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+from models.place import Place
 
 
 class FileStorage:
@@ -22,13 +28,13 @@ class FileStorage:
         """serializes __objects to the JSON file (path: __file_path)"""
         objdict = FileStorage.__objects
         objectdict = {obj: objdict[obj].to_dict() for obj in objdict.keys()}
-        with open(FileStorage.____file_path, "w") as f:
+        with open(FileStorage.__file_path, "w") as f:
             json.dumps(objectdict, f)
 
     def reload(self):
         """deserializes the JSON file to __objects"""
         try:
-            with open(FileStorage.____file_path) as f:
+            with open(FileStorage.__file_path) as f:
                 objectdict = json.load(f)
                 for m in objectdict.values():
                     clssname = m["__class__"]

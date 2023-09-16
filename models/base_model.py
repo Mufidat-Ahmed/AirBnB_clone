@@ -4,6 +4,7 @@ import models
 from datetime import datetime
 import uuid
 
+
 class BaseModel:
     def __init__(self, *args, **kwargs):
         """Initializes new instance of basemodel
@@ -22,7 +23,7 @@ class BaseModel:
                 if key != '__class__':
                     setattr(self, key, value)
         else:
-           models.storage.new(self)
+            models.storage.new(self)
 
     def save(self):
         """updated_at with the current datetime"""
@@ -41,9 +42,10 @@ class BaseModel:
         datemtimes converted to strings
         """
         new_dict = {
-                key: value.isoformat() if isinstance(value, datetime) else value
-            for key, value in self.__dict__.items() if value is not None
-            }
+                key: value.isoformat() if isinstance(value, datetime)
+                else value
+                for key, value in self.__dict__.items() if value is not None
+                }
         new_dict['__class__'] = self.__class__.__name__
 
         return new_dict

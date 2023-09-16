@@ -4,10 +4,12 @@ from unittest.mock import patch
 from console import HBNBCommand
 from models import storage
 
+
 class TestHBNBCommand(unittest.TestCase):
 
     def setUp(self):
-        # Initialize the HBNBCommand instance and create a StringIO object to capture stdout
+        # Initialize the HBNBCommand instance
+        # create a StringIO object to capture stdout
         self.console = HBNBCommand()
         self.test_stdout = StringIO()
 
@@ -69,7 +71,8 @@ class TestHBNBCommand(unittest.TestCase):
 
         # Test the 'update' command
         with patch('sys.stdout', new=self.test_stdout):
-            self.console.onecmd(f"update BaseModel {test_obj_id} attr_name attr_value")
+            self.console.onecmd(f"update BaseModel {test_obj_id}
+                                attr_name attr_value")
             output = self.capture_stdout()
             self.assertEqual(output, "")
 
@@ -82,6 +85,7 @@ class TestHBNBCommand(unittest.TestCase):
         # Test the 'EOF' command
         result = self.console.onecmd("EOF")
         self.assertTrue(result)
+
 
 if __name__ == '__main__':
     unittest.main()

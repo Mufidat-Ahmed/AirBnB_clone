@@ -24,6 +24,12 @@ class TestAmenityInstantation(unittest.TestCase):
     def test_updated_at_publicdate_time(self):
         self.assertEqual(datetime, type(Amenity().updated_at))
 
+    def test_name_public_attribute(self):
+        amenity = Amenity()
+        self.assertEqual(str, type(amenity.name))
+        self.assertIn("name", dir(amenity))
+        self.assertNotIn("name", amenity.__dict__)
+
     def test_differnt_user_created_at(self):
         amenity1 = Amenity()
         amenity2 = Amenity()
@@ -113,6 +119,7 @@ class TestAmenity_to_dict(unittest.TestCase):
         with self.assertRaises(TypeError):
             amenity.to_dict(None)
 
+
 class TestAmenity_save(unittest.TestCase):
     """Unittests for testing save method of the  class."""
 
@@ -159,7 +166,6 @@ class TestAmenity_save(unittest.TestCase):
         amenityid = "Amenity." + amenity.id
         with open("file.json", "r") as f:
             self.assertIn(amenityid, f.read())
-
 
 
 if __name__ == "__main__":

@@ -70,8 +70,8 @@ class TestUserInstantation(unittest.TestCase):
     def test_instantiation_kwargs(self):
         dt = datetime.now()
         dt_iso = dt.isoformat()
-        user = User(id="2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4", created_at=dt_iso, updated_at=dt_iso)
-        self.assertEqual(user.id, "2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4")
+        user = User(id="123", created_at=dt_iso, updated_at=dt_iso)
+        self.assertEqual(user.id, "123")
         self.assertEqual(user.created_at, dt)
         self.assertEqual(user.updated_at, dt)
 
@@ -125,6 +125,7 @@ class TestUser_to_dict(unittest.TestCase):
         with self.assertRaises(TypeError):
             user.to_dict(None)
 
+
 class TestUser_save(unittest.TestCase):
     """Unittests for testing save method of the  class."""
 
@@ -171,7 +172,6 @@ class TestUser_save(unittest.TestCase):
         userid = "User." + user.id
         with open("file.json", "r") as f:
             self.assertIn(userid, f.read())
-
 
 
 if __name__ == "__main__":

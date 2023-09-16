@@ -71,8 +71,8 @@ class TestHBNBCommand(unittest.TestCase):
 
         # Test the 'update' command
         with patch('sys.stdout', new=self.test_stdout):
-            self.console.onecmd(f"update BaseModel {test_obj_id}
-                                attr_name attr_value")
+            self.console.onecmd(
+                    f"update BaseModel {test_obj_id} attr_name attr_value")
             output = self.capture_stdout()
             self.assertEqual(output, "")
 

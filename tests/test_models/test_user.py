@@ -25,7 +25,7 @@ class TestUserInstantation(unittest.TestCase):
         self.assertEqual(datetime, type(User().created_at))
 
     def test_updated_at_publicdate_time(self):
-        self.assertEqual(datetime, type(User().update_at))
+        self.assertEqual(datetime, type(User().updated_at))
 
     def test_password_string(self):
         self.assertEqual(str, type(User.password))
